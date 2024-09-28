@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- задание 1 -->
+
+    <button id="button1">Первая кнопка</button>
+    <button id="button2">Вторая кнопка</button>
+    <button id="button3">Третья кнопка</button>
+
+    <button id="r">R</button>
+    <button id="g">G</button>
+    <button id="b">B</button>
+
+    <script>
+        const button1 = document.getElementById('button1');
+        const button2 = document.getElementById('button2');
+        const button3 = document.getElementById('button3');
+        button1.addEventListener('click', () => {
+            button1.style.backgroundColor = "blue";
+            console.log('Вы нажали на кнопку'); });
+        button2.addEventListener('mouseover', () => {
+            button2.style.backgroundColor = "green";
+            console.log('Вы навели на кнопку'); });
+        button3.addEventListener('mouseover', () => {
+            alert('Вы навели на кнопку'); });
+        button3.addEventListener('mouseout', () => {
+            alert('Вы убрали курсор с кнопки');
+        });
+
+            document.body.append(button1);
+            document.body.append(button2);
+            document.body.append(button3);
+    </script>
+
+    <!-- задание 2  -->
+    <script>
+    const redButton = document.getElementById("r");
+    const greenButton = document.getElementById("g");
+    const blueButton = document.getElementById("b");
+    const body = document.body;
+    const previousBackgroundColor = body.style.backgroundColor;
+
+    redButton.addEventListener("click", () => {
+    if (body.style.backgroundColor === "red") {
+        body.style.backgroundColor = "white";
+    } else {
+        body.style.backgroundColor = "red";
+    }
+    });
+    greenButton.addEventListener("click", () => {
+    if (body.style.backgroundColor === "green") {
+        body.style.backgroundColor = "white";
+    } else {
+        body.style.backgroundColor = "green";
+    }
+    });
+    blueButton.addEventListener("click", () => {
+    if (body.style.backgroundColor === "blue") {
+        body.style.backgroundColor = "white";
+    } else {
+        body.style.backgroundColor = "blue";
+    }
+    });
+
+    </script>
+
+    <div class="kvadrat" id="kv"></div>
+    <p class="da">Для перемщения нажмите на квадрат, а затем"›^‹"</p>
+    <!-- задание 3 -->
+    <script>
+    let elem = document.getElementById("kv");
+    elem.tabIndex = 0;
+
+    elem.addEventListener("keydown", function (event) {
+    if (event.code != "ArrowRight" && event.code != "ArrowLeft" &&
+        event.code != "ArrowUp" && event.code != "ArrowDown") return;
+
+    let rectElem = elem.getBoundingClientRect();
+    let x = rectElem.x + pageXOffset,
+        y = rectElem.y + pageYOffset;
+
+    if (event.code == "ArrowRight") x += elem.offsetWidth;
+    if (event.code == "ArrowLeft")  x -= elem.offsetWidth;
+    if (event.code == "ArrowUp")    y -= elem.offsetHeight;
+    if (event.code == "ArrowDown")  y += elem.offsetHeight;
+    
+    elem.style.position = "absolute";
+    elem.style.left = x + "px";
+    elem.style.top = y + "px";
+});
+    </script>
+</body>
+</html>
